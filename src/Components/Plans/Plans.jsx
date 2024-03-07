@@ -5,6 +5,7 @@ import Card from "../Cards/Card";
 
 const Section = styled.section`
   min-width: 100vw;
+  padding-bottom: 5rem;
 `;
 
 const Container = styled.div`

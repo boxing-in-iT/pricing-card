@@ -63,22 +63,27 @@ const Button = styled.button`
 `;
 
 const Card = ({ plan }) => {
-  console.log("ALL OBJ: ", plan);
   const { title, price, benefits, buttonText } = plan;
-
-  console.log("DD: ", benefits);
+  const isMonthly = price.includes("/month");
 
   return (
     <CardWrapper>
       <div>
         <p>{title}</p>
         <h3>
-          $99 <span>/ month</span>
+          {isMonthly ? (
+            <>
+              {price.split("/")[0]}
+              <span>/ month</span>
+            </>
+          ) : (
+            price
+          )}
         </h3>
       </div>
       <Benefits>
         {benefits?.map((data, i) => (
-          <BenefitItem>{data}</BenefitItem>
+          <BenefitItem key={i}>{data}</BenefitItem>
         ))}
       </Benefits>
       <Button>{buttonText}</Button>
